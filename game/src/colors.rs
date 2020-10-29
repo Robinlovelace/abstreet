@@ -524,6 +524,9 @@ impl ColorScheme {
         cs.residential_building = hex("#DCD9D6");
         cs.commerical_building = cs.residential_building;
 
+        cs.panel_bg = Color::WHITE.alpha(0.8);
+        cs.gui_style.panel_bg = cs.panel_bg;
+
         cs
     }
 

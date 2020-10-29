@@ -12,7 +12,7 @@ use crate::{
 // Same as body()
 pub const DEFAULT_FONT: Font = Font::OverpassRegular;
 pub const DEFAULT_FONT_SIZE: usize = 21;
-const DEFAULT_FG_COLOR: Color = Color::WHITE;
+const DEFAULT_FG_COLOR: Color = Color::grey(0.4);
 
 pub const BG_COLOR: Color = Color::grey(0.3);
 pub const SELECTED_COLOR: Color = Color::grey(0.5);
