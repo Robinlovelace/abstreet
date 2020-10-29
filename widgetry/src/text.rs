@@ -58,12 +58,12 @@ pub struct TextSpan {
 
 impl TextSpan {
     pub fn fg(mut self, color: Color) -> TextSpan {
-        assert_eq!(self.fg_color, DEFAULT_FG_COLOR);
+        //assert_eq!(self.fg_color, DEFAULT_FG_COLOR);
         self.fg_color = color;
         self
     }
     pub fn maybe_fg(mut self, color: Option<Color>) -> TextSpan {
-        assert_eq!(self.fg_color, DEFAULT_FG_COLOR);
+        //assert_eq!(self.fg_color, DEFAULT_FG_COLOR);
         if let Some(c) = color {
             self.fg_color = c;
         }
@@ -138,7 +138,7 @@ impl TextSpan {
 pub fn Line<S: Into<String>>(text: S) -> TextSpan {
     TextSpan {
         text: text.into(),
-        fg_color: DEFAULT_FG_COLOR,
+        fg_color: Color::hex("#F2F2F2"),
         size: DEFAULT_FONT_SIZE,
         font: DEFAULT_FONT,
         underlined: false,

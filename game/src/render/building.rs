@@ -203,10 +203,11 @@ impl DrawBuilding {
         }
         if opts.camera_angle != CameraAngle::Abstract {
             paths_batch.push(
-                cs.zoomed_road_surface(
+                /*cs.zoomed_road_surface(
                     LaneType::Sidewalk,
                     map.get_parent(bldg.sidewalk()).get_rank(),
-                ),
+                ),*/
+                Color::hex("#4B4B4B"),
                 driveway.make_polygons(NORMAL_LANE_THICKNESS),
             );
         }

@@ -176,7 +176,7 @@ impl Btn {
             maybe_tooltip: None,
 
             text: Text::from(Line(label)),
-            unselected_bg_color: Color::grey(0.5),
+            unselected_bg_color: Color::hex("#EE702E").alpha(0.7),
             selected_bg_color: Color::ORANGE,
         }
     }
@@ -191,7 +191,7 @@ impl Btn {
             text: Text::from(Line(label).fg(Color::hex("#5B5B5B"))),
             // This is sometimes against a white background and could just be None, but some
             // callers need the background.
-            unselected_bg_color: Color::WHITE,
+            unselected_bg_color: Color::hex("#EE702E").alpha(0.7),
             selected_bg_color: Color::grey(0.8),
         }
     }
@@ -493,7 +493,7 @@ impl BtnBuilder {
                 unselected_bg_color,
                 ..
             } => {
-                assert_eq!(unselected_bg_color, Color::WHITE);
+                //assert_eq!(unselected_bg_color, Color::WHITE);
                 text.draw(ctx).container().padding(15).bg(Color::grey(0.7))
             }
             BtnBuilder::PlainText { txt, .. } => txt
