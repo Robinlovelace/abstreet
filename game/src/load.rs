@@ -153,7 +153,7 @@ mod wasm_loader {
             // data/ directory, where files aren't compressed.
             let url = if cfg!(feature = "wasm_s3") {
                 format!(
-                    "http://abstreet.s3-website.us-east-2.amazonaws.com/{}.gz",
+                    "http://abstreet.s3-website.us-east-2.amazonaws.com/osm_demo/{}.gz",
                     path.strip_prefix(&abstutil::path("")).unwrap()
                 )
             } else {

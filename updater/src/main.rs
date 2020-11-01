@@ -99,10 +99,27 @@ fn just_compare() {
 }
 
 fn upload() {
-    let remote_base = "/home/dabreegster/Dropbox/abstreet_data";
+    let remote_base = "/home/dabreegster/tmp_mass_import_output";
 
-    let mut local = generate_manifest();
-    let remote: Manifest = abstutil::maybe_read_json(
+    let local = generate_manifest();
+
+    for (path, entry) in &local.entries {
+        if path.contains("/input/") {
+            continue;
+        }
+        let remote_path = format!("{}/{}.gz", remote_base, path);
+        std::fs::create_dir_all(std::path::Path::new(&remote_path).parent().unwrap()).unwrap();
+        println!("> compressing {}", path);
+        {
+            let mut input = BufReader::new(File::open(&path).unwrap());
+            let out = File::create(&remote_path).unwrap();
+            let mut encoder = flate2::write::GzEncoder::new(out, flate2::Compression::best());
+            std::io::copy(&mut input, &mut encoder).unwrap();
+            encoder.finish().unwrap();
+        }
+    }
+
+    /*let remote: Manifest = abstutil::maybe_read_json(
         format!("{}/MANIFEST.json", remote_base),
         &mut Timer::throwaway(),
     )
@@ -161,7 +178,7 @@ fn upload() {
         }
     }
 
-    abstutil::write_json(format!("{}/MANIFEST.json", remote_base), &local);
+    abstutil::write_json(format!("{}/MANIFEST.json", remote_base), &local);*/
     abstutil::write_json("data/MANIFEST.json".to_string(), &local);
 }
 

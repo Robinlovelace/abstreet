@@ -17,7 +17,7 @@ function extract {
 	# lags heavily with -j4 here.
 	for raw_extract in `ls ~/bbike_extracts`; do
 		raw_extract=`basename -s .osm $raw_extract`
-		echo "cargo run --release --bin extract_cities -- /home/$USER/bbike_extracts/$raw_extract.osm --radius_around_label_miles=6 > extract_$raw_extract.log 2>&1"
+		echo "cargo run --release --bin extract_cities -- /home/$USER/bbike_extracts/$raw_extract.osm --radius_around_label_miles=3 > extract_$raw_extract.log 2>&1"
 	done | parallel --bar -j1
 
 	# Spaces in filenames will mess stuff up
